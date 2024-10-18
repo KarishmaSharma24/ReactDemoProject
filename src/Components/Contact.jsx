@@ -16,32 +16,32 @@ function Contact() {
       });
 
       const pageName = useContext(BreadcromContext);
-      
+
       const [errors, setErrors] = useState({});
       const [submitting, setSubmitting] = useState(false);
 
-      const handleChange = (e) =>{
-            const {name, value} = e.target;
+      const handleChange = (e) => {
+            const { name, value } = e.target;
             setInputFields({
-                  ...inputFields,
-                  [name] : value,
+                  ...inputFields,//sprade operator
+                  [name]: value,
             });
       };
 
       const validate = () => {
             const newErrors = {};
-            if(!inputFields.name) newErrors.name = "Name is required";
-            if(!inputFields.mobile) newErrors.mobile = "Mobile is require";
-            if(!inputFields.password) newErrors.password = "Password is require";
-            if(!inputFields.email) newErrors.email = "Email is required";
-            
+            if (!inputFields.name) newErrors.name = "Name is required";
+            if (!inputFields.mobile) newErrors.mobile = "Mobile is require";
+            if (!inputFields.password) newErrors.password = "Password is require";
+            if (!inputFields.email) newErrors.email = "Email is required";
+
             console.log(newErrors);
             console.log("newErrors");
             return newErrors;
       };
-      
+
       async function handleForm(e) {
-      
+
             e.preventDefault();
             const validationErrors = validate();
             console.log("hhhh", validationErrors);
@@ -50,19 +50,19 @@ function Contact() {
                   setErrors(validationErrors);
             } else {
                   setSubmitting(true);
-                   try {
-            const response = await axios.post('http://localhost:8000/api/contact', inputFields);
-            alert("Form submitted successfully!");
-        } catch (error) {
-            console.error("Error:", error);
-            alert("Error submitting form");
-        } finally {
-            setSubmitting(false);
-        }
-                  
+                  try {
+                        const response = await axios.post('http://localhost:8000/api/contact', inputFields);
+                        alert("Form submitted successfully!");
+                  } catch (error) {
+                        console.error("Error:", error);
+                        alert("Error submitting form");
+                  } finally {
+                        setSubmitting(false);
+                  }
+
             }
       }
-      
+
       return (
             <>
                   <h1 className="text-center">Conatct Form {pageName}</h1>
@@ -92,7 +92,7 @@ function Contact() {
 
 
                         <Button variant="primary" type="submit" disabled={submitting}>
-                        {submitting ? "Submitting..." : "Submit"}
+                              {submitting ? "Submitting..." : "Submit"}
                         </Button>
                   </Form>
             </>

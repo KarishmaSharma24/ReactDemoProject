@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
+
 
 function ProductList() {
 
@@ -34,7 +36,9 @@ function ProductList() {
                                                       <Card.Text>
                                                             {currData.description}
                                                       </Card.Text>
-                                                      <Button variant="primary">View</Button>
+                                                      <Button variant="primary" >
+                                                            <Link to={`/product/${currData.id}`} className='text-white'>Details</Link>
+                                                      </Button>
                                                 </Card.Body>
                                           </Card>
                                     </Col>
