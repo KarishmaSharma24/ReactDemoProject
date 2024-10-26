@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 function ProductList() {
 
       const [apiData, setApiData] = useState([]);
+      const [searchData, setSearchData] = useState('');
 
       useEffect(() => {
             fetch('https://dummyjson.com/products')
@@ -19,14 +20,19 @@ function ProductList() {
                   });
       }, [])
 
-
-
+      let filteredData = apiData.filter((currData) => {
+            return currData.title.toLowerCase().includes(searchData.toLowerCase())
+      })
+      
       return <>
             <div className="container mt-5">
                   <h1>Product List</h1>
                   <Row>
+                        <Col md={12} className='my-2'>
+                              <input type="text" placeholder="Search Product" className="form-control" value={searchData} onChange={(e)=>setSearchData(e.target.value)}/>
+                        </Col>
                         {
-                              apiData.length > 0 ? apiData.map((currData) => (
+                              apiData.length > 0 ? filteredData.map((currData) => (
 
                                     <Col md={4} key={currData.id} className="mb-4">
                                           <Card style={{ width: '100%' }}>

@@ -67,12 +67,13 @@ function Register() {
                   .post('http://localhost:8000/api/register', user)
                   .then((response) => {
                         
-                              
+                        setGeneralError("");
                         alert("Form submitted successfully!");
                         console.log(response.data);
 
                   })
                   .catch((error) => {
+                        setGeneralError("");
                         if (error.response && error.response.status === 400) {
                               console.error("Error:", error.response.data.message); 
                               setGeneralError(error.response.data.message.email);
@@ -96,26 +97,26 @@ function Register() {
                         <Row className="mb-3">
                               <Form.Group as={Col} controlId="formGridCity">
                                     <Form.Label>Name</Form.Label>
-                                    <Form.Control type="text" name="name" value={user.name} onChange={handleChange} />
+                                    <Form.Control type="text" name="name" value={user.name} onChange={handleChange} isInvalid={!!errors.name}/>
                                     {errors.name ? <span className="error text-danger">{errors.name}</span> : null}
                               </Form.Group>
 
                               <Form.Group as={Col} controlId="formGridState">
                                     <Form.Label>Mobile</Form.Label>
-                                    <Form.Control type="number" name="mobile" value={user.mobile} onChange={handleChange} />
+                                    <Form.Control type="number" name="mobile" value={user.mobile} onChange={handleChange} isInvalid={!!errors.mobile}/>
                                     {errors.mobile ? <span className="error text-danger">{errors.mobile}</span> : null}
                               </Form.Group>
                         </Row>
                         <Row className="mb-3 ">
                               <Form.Group as={Col} controlId="formGridEmail">
                                     <Form.Label>Email</Form.Label>
-                                    <Form.Control type="email" name="email" value={user.email} placeholder="Enter email" onChange={handleChange} />
+                                    <Form.Control type="email" name="email" value={user.email} placeholder="Enter email" onChange={handleChange} isInvalid={!!errors.email}/>
                                     {errors.email ? <span className="error text-danger">{errors.email}</span> : null}
                               </Form.Group>
 
                               <Form.Group as={Col} controlId="formGridPassword">
                                     <Form.Label>Password</Form.Label>
-                                    <Form.Control type="password" name="password" value={user.password} placeholder="Password" onChange={handleChange} />
+                                    <Form.Control type="password" name="password" value={user.password} placeholder="Password" onChange={handleChange} isInvalid={!!errors.password}/>
                                     {errors.password ? <span className="error text-danger">{errors.password}</span> : null}
                               </Form.Group>
                         </Row>
