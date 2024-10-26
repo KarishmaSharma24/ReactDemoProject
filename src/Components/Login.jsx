@@ -6,21 +6,19 @@ import { useState } from "react";
 
 
 function Login() {
-      const [user, setUser] = useState({
-            email:"",
-            password:"",
-      });
+      const [email, setEmail] = useState("");
+      const [password, setPassword] = useState("");
 
-      function handleChange(e){
-            const { name, value } = e.target;
-            setUser({
-                  ...user,
-                  [name]:value,
-            });
-      }
+    
 
       function handleLoginForm(e){
             e.preventDefault();
+            const loginData = {
+                  email,
+                  password,
+            }
+            console.log("lgoin");
+            console.log(loginData);
             
       }     
 
@@ -32,12 +30,12 @@ function Login() {
                         <Row className="mb-3 ">
                               <Form.Group as={Col} controlId="formGridEmail">
                                     <Form.Label>Email</Form.Label>
-                                    <Form.Control type="email" name="email" value={user.email} placeholder="Enter email" onChange={handleChange} />
+                                    <Form.Control type="email" name="email" value={user.email} placeholder="Enter email" onChange={(e)=>{e.target.value}} />
                               </Form.Group>
 
                               <Form.Group as={Col} controlId="formGridPassword">
                                     <Form.Label>Password</Form.Label>
-                                    <Form.Control type="password" name="password" value={user.password} placeholder="Password" onChange={handleChange} />
+                                    <Form.Control type="password" name="password" value={user.password} placeholder="Password" onChange={(e)=>{e.target.value}} />
                               </Form.Group>
                         </Row>
 
