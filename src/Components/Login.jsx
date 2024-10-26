@@ -6,26 +6,26 @@ import { useState } from "react";
 
 
 function Login() {
-      const [email, setEmail] = useState("");
-      const [password, setPassword] = useState("");
+      // const [email, setEmail] = useState("");
+      // const [password, setPassword] = useState("");
 
     
 
-      function handleLoginForm(e){
-            e.preventDefault();
-            const loginData = {
-                  email,
-                  password,
-            }
-            console.log("lgoin");
-            console.log(loginData);
+      // function handleLoginForm(e){
+      //       e.preventDefault();
+      //       const loginData = {
+      //             email,
+      //             password,
+      //       }
+      //       console.log("lgoin");
+      //       console.log(loginData);
             
-      }     
+      // }     
 
       return (
             <>
             <h1 className="text-center">Login Form</h1>
-                  <Form className="p-5" onSubmit={handleLoginForm}>
+                  {/* <Form className="p-5" onSubmit={handleLoginForm}>
                        
                         <Row className="mb-3 ">
                               <Form.Group as={Col} controlId="formGridEmail">
@@ -43,7 +43,7 @@ function Login() {
                         <Button variant="primary" type="submit" >
                               Login
                         </Button>
-                  </Form>
+                  </Form> */}
             </>
       );
 }
